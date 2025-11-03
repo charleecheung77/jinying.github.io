@@ -6,31 +6,70 @@
     <title>Jinying Li - IT & Learning Portfolio</title>
     
     <style>
-        /* ==================== 基础设置 ==================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            /* 主色系 - 温暖柔和 */
+            --coral-orange: #FF9A56;
+            --soft-apricot: #FFD4A3;
+            --peach: #FFAB73;
+            
+            /* 辅助色 - 清新平衡 */
+            --mint-cream: #E8F3EF;
+            --sage-green: #B8D4C8;
+            --sky-blue: #E3F0F7;
+            
+            /* 中性基底 */
+            --ivory-white: #FFFEF9;
+            --warm-gray: #F5F3EE;
+            --soft-gray: #E8E6E0;
+            
+            /* 文字 */
+            --text-dark: #3D3D3D;
+            --text-medium: #6B6B6B;
+            --text-light: #9B9B9B;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f7fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--ivory-white);
         }
 
-        /* ==================== 导航栏 ==================== */
+        /* 导航栏 - 玻璃拟态效果 */
         nav {
-            position: fixed;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
             top: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-            padding: 1rem 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--soft-gray);
         }
 
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            color: var(--coral-orange);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -39,34 +78,646 @@
             align-items: center;
             padding: 0 2rem;
         }
-
+        
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--coral-orange);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
-
+        
         .nav-links {
-            display: flex;
             list-style: none;
-            gap: 2rem;
+            display: flex;
+            gap: 2.5rem;
         }
-
+        
         .nav-links a {
+            color: var(--text-dark);
             text-decoration: none;
-            color: #333;
+            transition: all 0.3s;
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
         }
-
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral-orange);
+            transition: width 0.3s;
+        }
+        
         .nav-links a:hover {
-            color: #5B6FF5;
+            color: var(--coral-orange);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        /* ==================== 主页 Hero Section ==================== */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral-orange);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--coral-orange);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: url('profile-photo.png') center center / cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(255, 154, 86, 0.3);
+            overflow: hidden;
+        }
+
+        /* Hero区域 - 不对称设计 */
+        .hero {
+            background: linear-gradient(135deg, var(--ivory-white) 0%, var(--mint-cream) 50%, var(--sky-blue) 100%);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--soft-apricot) 0%, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50%;
+        }
+
+        .hero .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: var(--coral-orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            background: var(--coral-orange);
+            color: white;
+            padding: 1.1rem 2.8rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(255, 154, 86, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 154, 86, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--coral-orange);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-medium);
+            margin-bottom: 3.5rem;
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+
+        /* 关于我 - 卡片式设计 */
+        .about {
+            background: var(--ivory-white);
+            padding: 6rem 2rem;
+        }
+
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--soft-apricot) 0%, var(--sage-green) 100%);
+            height: 400px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--coral-orange);
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        /* 项目展示 - 混合布局 */
+        .projects {
+            background: var(--warm-gray);
+            padding: 6rem 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 154, 86, 0.15);
+        }
+
+        .project-header {
+            height: 180px;
+            background: linear-gradient(135deg, var(--mint-cream) 0%, var(--sky-blue) 100%);
+            position: relative;
+        }
+
+        .project-card:nth-child(2) .project-header {
+            background: linear-gradient(135deg, var(--soft-apricot) 0%, var(--peach) 100%);
+        }
+
+        .project-card:nth-child(3) .project-header {
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--mint-cream) 100%);
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .project-body p {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--warm-gray);
+            color: var(--text-medium);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-secondary {
+            color: var(--coral-orange);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .btn-secondary:hover {
+            gap: 1rem;
+        }
+
+        /* 技能部分 - 卡片网格 */
+        .skills {
+            background: var(--ivory-white);
+            padding: 6rem 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--soft-gray);
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            border-color: var(--coral-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 154, 86, 0.1);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--mint-cream);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category:nth-child(2) .skill-icon {
+            background: var(--soft-apricot);
+        }
+
+        .skill-category:nth-child(3) .skill-icon {
+            background: var(--sky-blue);
+        }
+
+        .skill-category h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-medium);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--soft-gray);
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 时间线 - 现代化设计 */
+        .timeline {
+            background: var(--warm-gray);
+            padding: 6rem 2rem;
+        }
+
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--coral-orange) 0%, var(--sage-green) 100%);
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            margin-left: 80px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -62px;
+            top: 35px;
+            width: 16px;
+            height: 16px;
+            background: var(--coral-orange);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(255, 154, 86, 0.3);
+        }
+
+        .timeline-item h3 {
+            color: var(--coral-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .timeline-item .date {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .timeline-item p {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* 联系方式 - 双栏布局 */
+        .contact {
+            background: linear-gradient(135deg, var(--ivory-white) 0%, var(--mint-cream) 100%);
+            padding: 6rem 2rem;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info-text h2 {
+            color: var(--text-dark);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-text p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-btn {
+            background: white;
+            color: var(--text-dark);
+            padding: 1.2rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid var(--soft-gray);
+        }
+
+        .contact-btn:hover {
+            background: var(--coral-orange);
+            color: white;
+            border-color: var(--coral-orange);
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(255, 154, 86, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        /* 色板展示 */
+        .color-palette {
+            background: var(--ivory-white);
+            padding: 5rem 2rem;
+        }
+
+        .palette-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .color-box {
+            height: 180px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .color-name {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 响应式 */
+        @media (max-width: 968px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .about-wrapper,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                margin-left: 60px;
+            }
+
+            
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            color: var(--coral-orange);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--coral-orange);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--coral-orange);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        nav ul {
+                gap: 1.5rem;
+            }
+        }
+    
         #home {
             min-height: 100vh;
             display: flex;
@@ -74,130 +725,135 @@
             justify-content: center;
             text-align: center;
             padding: 8rem 2rem 4rem;
-            background: linear-gradient(to bottom, #f5f7fa, #ffffff);
+            background: linear-gradient(135deg, var(--ivory-white) 0%, var(--mint-cream) 50%, var(--sky-blue) 100%);
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        #home::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--soft-apricot) 0%, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50%;
+        }
+        
         .hero-content {
             max-width: 900px;
+            position: relative;
+            z-index: 1;
         }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(91, 111, 245, 0.3);
-        }
-
+        
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.2;
         }
-
+        
         .subtitle {
             font-size: 1.5rem;
-            color: #666;
+            color: var(--text-medium);
             margin-bottom: 1.5rem;
+            font-weight: 500;
         }
-
+        
         .description {
             font-size: 1.1rem;
-            color: #777;
+            color: var(--text-medium);
             margin-bottom: 3rem;
             line-height: 1.8;
         }
-
+        
         .cta-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-
+        
         .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
+            padding: 1.1rem 2.8rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid transparent;
             display: inline-block;
+            letter-spacing: 0.5px;
         }
-
+        
         .btn-primary {
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
+            background: var(--coral-orange);
             color: white;
+            border: none;
+            box-shadow: 0 6px 20px rgba(255, 154, 86, 0.3);
         }
-
+        
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(91, 111, 245, 0.3);
+            background: var(--peach);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 154, 86, 0.4);
         }
-
+        
         .btn-secondary {
             background: white;
-            color: #5B6FF5;
-            border: 2px solid #5B6FF5;
+            color: var(--coral-orange);
+            border: 2px solid var(--coral-orange);
         }
-
+        
         .btn-secondary:hover {
-            background: #5B6FF5;
+            background: var(--coral-orange);
             color: white;
+            transform: translateY(-3px);
         }
-
+        
         .social-links {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             margin-top: 3rem;
         }
-
+        
         .social-links a {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background: white;
-            color: #666;
+            color: var(--text-medium);
             text-decoration: none;
             transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            font-size: 1.3rem;
         }
-
+        
         .social-links a:hover {
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
+            background: var(--coral-orange);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 154, 86, 0.3);
         }
-
+        
         .scroll-indicator {
             margin-top: 4rem;
             font-size: 2rem;
-            color: #ccc;
+            color: var(--text-light);
             animation: bounce 2s infinite;
         }
-
+        
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
             60% { transform: translateY(-5px); }
         }
-
-        /* ==================== Core Competencies ==================== */
+        
         .competencies {
             display: flex;
             flex-wrap: wrap;
@@ -205,508 +861,691 @@
             justify-content: center;
             margin: 2rem 0;
         }
-
+        
         .competency-tag {
             background: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
             font-weight: 500;
-            color: #5B6FF5;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.3s;
+            border: 2px solid var(--soft-gray);
         }
-
+        
         .competency-tag:hover {
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
+            background: var(--coral-orange);
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            border-color: var(--coral-orange);
+            box-shadow: 0 6px 20px rgba(255, 154, 86, 0.3);
         }
-
-        /* ==================== 关于我 About Section ==================== */
-        #about {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-content {
+        
+        section {
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .story-section {
+        #about {
+            background: var(--mint-cream);
+            padding: 6rem 2rem;
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* My Journey Section */
+        .journey-section {
             background: white;
-            margin-bottom: 3rem;
+            padding: 3rem;
+            border-radius: 25px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
         }
-
-        .story-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #333;
+        
+        .journey-section h3 {
+            color: var(--coral-orange);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
         }
-
-        .icon {
-            font-size: 1.5rem;
-        }
-
-        .story-section p {
-            color: #666;
-            line-height: 1.8;
+        
+        .journey-section p {
+            color: var(--text-dark);
+            line-height: 2;
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
         }
-
-        .story-section ul {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .story-section li {
-            padding: 0.5rem 0;
-            color: #666;
-            display: flex;
-            align-items: start;
-            line-height: 1.7;
-        }
-
-        .story-section li:before {
-            content: "•";
-            color: #5B6FF5;
-            font-weight: bold;
-            margin-right: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        /* 核心价值卡片 */
-        .values-grid {
-            max-width: 1200px;
-            margin: 4rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .value-card {
+        
+        /* Why IT & Learning Section */
+        .why-section {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
+            border-left: 4px solid var(--coral-orange);
+        }
+        
+        .why-section h3 {
+            color: var(--coral-orange);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .why-section .intro-text {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 2;
+        }
+        
+        .motivation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .motivation-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: var(--warm-gray);
+            border-radius: 15px;
             transition: all 0.3s;
         }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(91, 111, 245, 0.15);
+        
+        .motivation-item:hover {
+            background: var(--mint-cream);
+            transform: translateX(8px);
         }
-
+        
+        .motivation-item .arrow {
+            color: var(--coral-orange);
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            line-height: 1.8;
+        }
+        
+        .motivation-content {
+            color: var(--text-dark);
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        
+        .motivation-content strong {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+        
+        /* Three Lenses - Value Cards */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid var(--soft-gray);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 154, 86, 0.15);
+        }
+        
         .value-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-blue), var(--sage-green));
+            color: var(--coral-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
         }
-
-        .value-icon.blue { background: #e8ebff; color: #5B6FF5; }
-        .value-icon.purple { background: #f5e8ff; color: #9B4DCA; }
-        .value-icon.pink { background: #ffe8f7; color: #ca4d9b; }
-
+        
         .value-card h4 {
-            font-size: 1.3rem;
+            color: var(--coral-orange);
             margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
-
+        
         .value-card p {
-            color: #666;
-            line-height: 1.6;
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        @media (max-width: 968px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* 研究兴趣 */
-        .interests-section {
-            max-width: 1200px;
-            margin: 4rem auto 0;
-            background: linear-gradient(135deg, #f8f9ff, #faf7ff);
-            padding: 3rem;
-            border-radius: 12px;
-        }
 
-        .interests-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+        
+        
+        
+        
+        
+        
+        
 
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .interest-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-        }
-
-        .interest-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .why-section {
+            margin-top: 3rem;
             background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
+            border-left: 4px solid var(--coral-orange);
+        }
+        
+        .why-section h3 {
+            color: var(--coral-orange);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .why-section .intro-text {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 2;
+        }
+        
+        .motivation-list {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .interest-text {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* ==================== 项目展示 Projects Section ==================== */
-        #projects {
-            padding: 5rem 2rem;
-            background: #f5f7fa;
-        }
-
-        .projects-grid {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: 1fr;
+            flex-direction: column;
             gap: 2rem;
         }
-
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        
+        .motivation-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: var(--warm-gray);
+            border-radius: 15px;
             transition: all 0.3s;
         }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(91, 111, 245, 0.2);
+        
+        .motivation-item:hover {
+            background: var(--mint-cream);
+            transform: translateX(8px);
+        }
+        
+        .motivation-item .arrow {
+            color: var(--coral-orange);
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            line-height: 1.8;
+        }
+        
+        .motivation-content {
+            color: var(--text-dark);
+            line-height: 2;
+            font-size: 1.05rem;
+        }
+        
+        .motivation-content strong {
+            color: var(--text-dark);
+            font-weight: 700;
         }
 
-        .project-header {
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
-            color: white;
-            padding: 3rem 2rem;
+        
+        
+        
+        
+        
+        @media (max-width: 968px) {
+            
+            
+            
+        }
+
+        
+        .section-header {
             text-align: center;
+            margin-bottom: 4rem;
         }
+        
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--coral-orange);
+            border-radius: 2px;
+        }
+        
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        
+        
+        .story-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 30px rgba(255, 154, 86, 0.15);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            border: 1px solid var(--soft-gray);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 154, 86, 0.15);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, var(--coral-orange), var(--soft-apricot));
+            padding: 2.5rem;
+            color: white;
+        }
+        
         .project-type {
             font-size: 0.9rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
+            opacity: 0.95;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
         }
-
-        .project-card h3 {
+        
+        .project-header h3 {
             font-size: 1.8rem;
-            margin-bottom: 0;
-            color: white;
+            line-height: 1.4;
+            font-weight: 700;
         }
-
+        
         .project-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
-
-        .project-overview {
-            margin-bottom: 2rem;
-        }
-
+        
         .project-overview h4 {
-            font-size: 1.2rem;
+            color: var(--coral-orange);
             margin-bottom: 1rem;
-            color: #333;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
-
+        
         .project-overview p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 2;
+            font-size: 1.05rem;
         }
-
+        
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
             margin: 2rem 0;
         }
-
+        
         .tag {
-            background: #e8ebff;
-            color: #5B6FF5;
-            padding: 0.4rem 1rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            background: var(--warm-gray);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
             font-weight: 500;
+            transition: all 0.3s;
         }
-
+        
+        .tag:hover {
+            background: var(--soft-apricot);
+            transform: scale(1.05);
+        }
+        
         .project-details {
             margin-top: 2rem;
         }
-
+        
         .detail-section {
             margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--warm-gray);
+            border-radius: 15px;
+            border-left: 4px solid var(--coral-orange);
+            transition: all 0.3s;
         }
-
+        
+        .detail-section:hover {
+            background: var(--mint-cream);
+            transform: translateX(5px);
+        }
+        
         .detail-section h5 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: #333;
+            color: var(--coral-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
-
+        
         .detail-section p, .detail-section li {
-            color: #666;
-            line-height: 1.7;
+            color: var(--text-dark);
+            line-height: 2;
+            font-size: 1.05rem;
         }
-
+        
         .detail-section ul {
-            list-style: none;
-            padding-left: 0;
+            padding-left: 1.5rem;
         }
-
+        
         .detail-section li {
-            padding: 0.3rem 0;
-            display: flex;
+            margin-bottom: 0.8rem;
+        }
+        
+        #contact {
+            background: linear-gradient(135deg, var(--ivory-white) 0%, var(--sky-blue) 100%);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: start;
         }
-
-        .detail-section li:before {
-            content: "→";
-            color: #5B6FF5;
-            margin-right: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* ==================== 联系方式 Contact Section ==================== */
-        #contact {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-        }
-
+        
         .contact-info h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--coral-orange);
+            font-weight: 700;
         }
-
+        
         .contact-info p {
-            color: #666;
+            color: var(--text-dark);
+            line-height: 2;
             margin-bottom: 2rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
         }
-
+        
         .contact-details {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
-
+        
         .contact-item {
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
+        
+        .contact-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(255, 154, 86, 0.15);
+        }
+        
         .contact-icon {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
+            background: var(--warm-gray);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
         }
-
-        .contact-icon.email { background: #e8ebff; color: #5B6FF5; }
-        .contact-icon.linkedin { background: #e8f5ff; color: #0077b5; }
-        .contact-icon.github { background: #f0f0f0; color: #333; }
-        .contact-icon.location { background: #f5e8ff; color: #9B4DCA; }
-
+        
         .contact-text h4 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-
-        .contact-text p, .contact-text a {
-            color: #666;
-            margin: 0;
+        
+        .contact-text a {
+            color: var(--coral-orange);
             text-decoration: none;
-            word-break: break-all;
+            transition: color 0.3s;
         }
-
+        
         .contact-text a:hover {
-            color: #5B6FF5;
+            color: var(--peach);
         }
-
-        /* 联系表单 */
+        
         .contact-form {
             background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-gray);
         }
-
+        
         .contact-form h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--coral-orange);
+            font-weight: 700;
         }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
-
+        
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
+            color: var(--text-dark);
+            font-weight: 600;
         }
-
+        
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.9rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
+            padding: 1rem;
+            border: 2px solid var(--soft-gray);
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s;
+            font-family: inherit;
         }
-
+        
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #5B6FF5;
-            box-shadow: 0 0 0 3px rgba(91, 111, 245, 0.1);
+            border-color: var(--coral-orange);
+            box-shadow: 0 0 0 3px rgba(255, 154, 86, 0.1);
         }
-
+        
         .form-group textarea {
             min-height: 150px;
             resize: vertical;
         }
-
+        
         .btn-submit {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, #5B6FF5, #9B4DCA);
+            background: linear-gradient(135deg, var(--coral-orange), var(--peach));
             color: white;
+            padding: 1.1rem 2.8rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(255, 154, 86, 0.3);
         }
-
+        
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(91, 111, 245, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 154, 86, 0.4);
         }
-
-        /* ==================== 页脚 ==================== */
+        
         footer {
-            background: #2c3e50;
+            background: var(--text-dark);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
-
+        
         footer p {
-            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
         }
-
-        /* ==================== 响应式设计 ==================== */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
+        
+        @media (max-width: 968px) {
+            h1 {
+                font-size: 2.5rem;
+            }
             
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .interests-grid {
-                grid-template-columns: 1fr;
-            }
-
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
+            
+            
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-
+            
             .btn {
                 width: 100%;
                 max-width: 300px;
             }
-
-            .competencies {
-                justify-content: center;
-            }
+            
+            
         }
-
-        /* ==================== 平滑滚动 ==================== */
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         section {
             scroll-margin-top: 80px;
         }
+
     </style>
 </head>
 <body>
+
 
     <!-- ==================== 导航栏 ==================== -->
     <nav>
@@ -724,22 +1563,21 @@
     <!-- ==================== 主页 Hero Section ==================== -->
     <section id="home">
         <div class="hero-content">
-            <div class="avatar">JL</div>
+            <div class="avatar"></div>
             
             <h1>Jinying Li</h1>
             
             <p class="subtitle">IT & Learning Master's Student</p>
             
             <p class="description">
-                From Digital Platform Management to Educational Technology Innovation
+                From Managing Projects to Designing Learning Experiences — exploring how technology supports meaningful learning.
             </p>
 
             <div class="competencies">
-                <span class="competency-tag">Digital Platform Management</span>
+                <span class="competency-tag">Learning Experience Design</span>
                 <span class="competency-tag">Educational Technology Research</span>
-                <span class="competency-tag">User Experience Analysis</span>
+                <span class="competency-tag">UX Analysis</span>
                 <span class="competency-tag">Project Management</span>
-                <span class="competency-tag">Cross-Cultural Communication</span>
                 <span class="competency-tag">Learning Tool Evaluation</span>
             </div>
             
@@ -758,85 +1596,84 @@
         </div>
     </section>
 
-    <!-- ==================== 关于我 About Section ==================== -->
+            <!-- ==================== 关于我 About Section ==================== -->
     <section id="about">
         <div class="section-header">
             <h2 class="section-title">About Me</h2>
             <p class="section-description">
-                From Practice to Theory, From Management to Learning Design
+                From technology operations to educational research—my journey in bridging digital innovation and human learning
             </p>
         </div>
 
         <div class="about-content">
-            <!-- 我的故事 -->
-            <div class="story-section">
-                <h3><span class="icon">🌟</span> My Journey</h3>
+            <!-- My Journey -->
+            <div class="journey-section">
+                <h3>My Journey</h3>
+                
                 <p>
-                    My path to IT & Learning began in an unexpected place—managing digital content platforms in China's rapidly evolving tech industry. As General Manager's Assistant at Hangzhou Rolling Elephant Network Technology Co. Ltd., I oversaw operations for TikTok, Douyin, and Xiaohongshu (Rednote), witnessing firsthand how technology transforms communication and knowledge sharing.
+                    My career has been shaped by a deep curiosity about how technology can enhance human learning and development. After earning my bachelor's degree in Business English from Jiangxi Normal University, I spent four years in the fast-paced world of Chinese tech startups, managing content operations on platforms like TikTok and Douyin.
                 </p>
+
                 <p>
-                    But it was my dual role as a project manager and a mother that truly sparked my interest in educational technology. While establishing company workflows and coordinating cross-departmental teams, I observed how digital tools could either facilitate or hinder learning processes. As a parent, I questioned how platforms like TikTok influence children's development—a question that would later become the focus of my academic research.
+                    Working in content operations, I witnessed firsthand how millions of young users, including children, engage with digital media. This experience raised important questions: How does technology shape learning? What makes digital content truly educational? These questions led me to pursue a Master's degree in IT, Learning & Design at the University of Gothenburg.
                 </p>
+
                 <p>
-                    From 2012 to 2015, I volunteered teaching Chinese calligraphy to kindergarten children. This hands-on experience with early learners revealed the gap between educational content design and children's actual learning needs. I saw how the right combination of physical materials, visual guidance, and adult support could unlock children's creative potential. Yet I also witnessed how poorly designed digital tools could overwhelm young minds rather than support them.
+                    Today, I combine my industry experience with academic rigor, researching topics like early childhood technology use, multimedia learning design, and educational technology effectiveness. My goal is to contribute to creating technology that genuinely supports learning and development.
                 </p>
+
                 <p>
-                    These experiences converged into a realization: technology is not inherently good or bad for learning—its impact depends on thoughtful design, appropriate context, and human mediation. To contribute meaningfully to this field, I needed theoretical frameworks and research methodologies. This is why I pursued the Master's program in IT & Learning at the University of Gothenburg.
+                    Beyond research, I'm a mother who applies learning theories to everyday parenting decisions. I'm also passionate about UX design, believing that well-designed learning experiences can make education more accessible and engaging for everyone.
                 </p>
             </div>
 
             <!-- Why IT & Learning -->
-            <div class="story-section">
-                <h3><span class="icon">💡</span> Why IT & Learning?</h3>
-                <p>Three interconnected motivations drive my academic pursuit:</p>
-                <ul>
-                    <li><strong>As a digital platform manager:</strong> I saw technology's power to scale communication and engagement. Platforms I managed reached millions of users, but I lacked the theoretical foundation to evaluate their educational value critically. I wanted to understand learning theories, instructional design principles, and evidence-based practices.</li>
-                    <li><strong>As a mother and volunteer educator:</strong> I experienced the anxiety many parents face: How much screen time is appropriate? Which content supports development? What role should adults play? These questions cannot be answered through intuition alone—they require rigorous research and evidence.</li>
-                    <li><strong>From project management background:</strong> I learned that successful implementation requires more than good intentions. Educational technology initiatives fail when they ignore organizational contexts, user needs, or change management principles. I want to bridge the gap between educational research and real-world implementation.</li>
-                </ul>
+            <div class="why-section">
+                <h3>Why IT & Learning?</h3>
+                <p class="intro-text">Three interconnected motivations drive my academic pursuit:</p>
+                
+                <div class="motivation-list">
+                    <div class="motivation-item">
+                        <span class="arrow">→</span>
+                        <div class="motivation-content">
+                            <strong>As a digital platform manager:</strong> I have been involved in managing multiple digital platform projects, witnessing firsthand the potential of technology to expand communication and enhance user engagement. This experience made me realize how technology influences information dissemination and user behavior, sparking my ongoing interest in learning and knowledge exploration. I have maintained a habit of proactive learning, continuously integrating new knowledge and technologies into practice, and appreciating the great potential at the intersection of technology and learning.
+                        </div>
+                    </div>
+                    
+                    <div class="motivation-item">
+                        <span class="arrow">→</span>
+                        <div class="motivation-content">
+                            <strong>As a mother and volunteer educator:</strong> I experienced the anxiety many parents face: How much screen time is appropriate? Which content supports development? What role should adults play? These questions cannot be answered through intuition alone—they require rigorous research and evidence.
+                        </div>
+                    </div>
+                    
+                    <div class="motivation-item">
+                        <span class="arrow">→</span>
+                        <div class="motivation-content">
+                            <strong>From project management background:</strong> I learned that successful implementation requires more than good intentions. Educational technology initiatives fail when they ignore organizational contexts, user needs, or change management principles. I want to bridge the gap between educational research and real-world implementation.
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- 核心价值 -->
+            <!-- 核心价值 - Three Lenses -->
             <div class="values-grid">
                 <div class="value-card">
-                    <div class="value-icon blue">🎯</div>
+                    <div class="value-icon">1</div>
                     <h4>The Manager's Lens</h4>
                     <p>I understand organizational dynamics, resource constraints, and implementation challenges. I know that successful edtech solutions must be scalable, sustainable, and aligned with institutional goals.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon purple">📚</div>
+                    <div class="value-icon">2</div>
                     <h4>The Researcher's Lens</h4>
                     <p>Through my Master's studies, I'm developing skills in literature review, research methodology, critical analysis, and academic writing. I approach problems systematically and ground arguments in evidence.</p>
                 </div>
 
                 <div class="value-card">
-                    <div class="value-icon pink">❤️</div>
+                    <div class="value-icon">3</div>
                     <h4>The Parent-Educator's Lens</h4>
                     <p>I empathize with learners' needs, value developmentally appropriate design, and appreciate the irreplaceable role of human interaction. Technology should enhance—not replace—human connection in learning.</p>
-                </div>
-            </div>
-
-            <!-- 研究兴趣 -->
-            <div class="interests-section">
-                <h3>Current Research Interests</h3>
-                <div class="interests-grid">
-                    <div class="interest-item">
-                        <div class="interest-icon">🎨</div>
-                        <div class="interest-text">How interface design affects learner engagement and cognitive load</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">👨‍👩‍👧</div>
-                        <div class="interest-text">The role of parental/educator mediation in children's digital learning</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">🧠</div>
-                        <div class="interest-text">Tools that support self-directed learning and metacognition</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon">🌍</div>
-                        <div class="interest-text">Cross-cultural differences in educational technology adoption</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1046,6 +1883,7 @@
             lastScroll = currentScroll;
         });
     </script>
+
 
 </body>
 </html>
